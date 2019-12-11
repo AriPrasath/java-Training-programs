@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class Main{
+    
+    public static boolean checkbalanced(String s){
+        char[] ch=s.toCharArray();
+        Stack<Character> stack=new Stack<>();
+        if(ch[0]=='}' || ch[0]==')' || ch[0]==']' || ch[0]=='*'){
+            return false;
+        }
+        for(int i=0;i<ch.length;i++){
+            if(ch[i]=='{' || ch[i]=='(' || ch[i]=='['){
+                stack.push(ch[i]);
+            }else if(ch[i]=='}' || ch[i]==')' || ch[i]==']' || ch[i]=='*'){
+                char match=getmatchingpair(ch[i]);
+                if(match==stack.peek() || match=='*'){
+                    stack.pop();
+                }else{
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    public static char getmatchingpair(char ch){
+        char cool='h';
+        
+        if(ch=='}')
+            cool='{';
+        if(ch==']')
+            cool='[';
+        if(ch==')')
+            cool='(';
+        if(ch=='*')
+            cool='*';
+        return cool;
+    }
+    public static void main(String[] args){
+        Scanner scanner=new Scanner(System.in);
+        
+        String s=scanner.nextLine();
+        
+        if(checkbalanced(s)){
+            System.out.println("Balanced");
+        }else{
+            System.out.println("Not Balanced");
+        }
+    }
+}
