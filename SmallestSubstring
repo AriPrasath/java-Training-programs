@@ -1,0 +1,53 @@
+IP:
+this is a test string
+tist
+
+
+import java.util.*;
+public class HelloWorld{
+    public static ArrayList<Character> q=new ArrayList<>();
+    public static ArrayList<Character> w=new ArrayList<>();
+     public static void main(String []args){
+        Scanner scanner=new Scanner(System.in);
+        String a=scanner.nextLine();
+        String b=scanner.nextLine();
+        int startindex=0,endindex=0,previndex=0;
+        String max=a;
+        do{
+            previndex=endindex;
+            startindex=a.indexOf(Character.toString(b.charAt(0)),startindex);
+            endindex=a.indexOf(Character.toString(b.charAt(b.length())),startindex);
+            String c=a.substring(startindex,endindex);
+            int count=2;
+            for(int i=1;i<b.length()-1 && count<=b.length();i++){
+                if(c.contains(Character.toString(b.charAt(i)))){
+                    count++;
+                }
+            }
+            if(count==b.length()){
+               if(c.length()<=max.length())
+                    max=c;
+            }
+            
+        }while(endindex!=previndex);
+     }
+}
+
+// System.out.println(a.length());
+        // for(char h : a.toCharArray()){
+        //     if(q.contains(h)){
+        //         System.out.print(h);
+        //     }else if(w.contains(h)){
+                
+        //     }else{
+        //         String s=new String(a);
+        //         String r=Character.toString(h);
+        //         s=s.replaceAll(r,"");
+        //         if((a.length()-s.length())%2==0){
+        //             q.add(h);
+        //             System.out.print(h);
+        //         }else{
+        //             w.add(h);
+        //         }
+        //     }
+        // }
